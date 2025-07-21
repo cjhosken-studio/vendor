@@ -1,16 +1,21 @@
+
+
+
+softwares:
+- ffmpeg (remove cmake dependency)
+- git (remove cmake dependency)
+
+add:
+- conda
+- openrv
+- npm / nvm?
+
+
 arnoldusd build (need usd)
 
-htoa
+Renderers:
 
-moonray
-
-renderman?
-
-
-
-
-nuke setup
-
-maya setup
-
-mari setup
+- htoa
+- openmoonray
+- renderman
+- cycles
