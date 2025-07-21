@@ -19,8 +19,12 @@ tools = [
 ]
 
 requires = [
-    "cmake-3.31.7+",
 ]
+
+build_command = f"""
+wget https://download.blender.org/release/Blender4.5/blender-{version}-linux-x64.tar.xz
+tar -xf blender-{version}-linux-x64.tar.xz -C "$REZ_BUILD_INSTALL_PATH" --strip-components=1
+"""
 
 def commands():
     env.PATH.prepend("{root}/4.5/python/bin")

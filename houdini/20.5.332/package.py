@@ -21,14 +21,14 @@ requires = [
 build_command=""
 
 def pre_commands():
-    command(f"cd /opt/hfs{version}/ && source ./houdini_setup_bash && cd -")
+    command(f"cd $HOME/software/sidefx/hfs{version}/ && source ./houdini_setup_bash && cd -")
 
 def commands():
 
-    env.PATH.prepend(f"/opt/hfs{version}/bin")
-    env.PATH.prepend(f"/opt/hfs{version}/python/bin")
+    env.PATH.prepend(f"$HOME/software/sidefx/hfs{version}/bin")
+    env.PATH.prepend(f"$HOME/software/sidefx/hfs{version}/python/bin")
 
-    env.LD_LIBRARY_PATH.append(f"/opt/hfs{version}/dsolib")
+    env.LD_LIBRARY_PATH.append(f"$HOME/software/sidefx/hfs{version}/dsolib")
 
-    env.HFS.set(f"/opt/hfs{version}")
-    env.HOUDINI_ROOT.set(f"/opt/hfs{version}")
+    env.HFS.set(f"$HOME/software/sidefx/hfs{version}")
+    env.HOUDINI_ROOT.set(f"$HOME/software/sidefx/hfs{version}")
