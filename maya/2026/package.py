@@ -19,7 +19,19 @@ tools = [
 requires = [
 ]
 
-build_command=""
+installer = "Autodesk_Maya_2026_1_Update_ML_Linux_64bit"
+
+build_command=f"""
+if [ ! -f "{installer}.tgz" ]; then
+    wget https://efulfillment.autodesk.com/NetSWDLD/prd/{version}/MAYA/A9AFE7E8-904B-3EEC-9689-0D2FD263FF90/{installer}.tgz
+fi
+
+if [ -f "{installer}.tgz" ]; then
+    tar -xzf {installer}.tgz
+    sudo ./Setup -q
+fi
+
+"""
 
 def commands():
     env.PATH.prepend(f"/usr/autodesk/maya{version}/bin")
