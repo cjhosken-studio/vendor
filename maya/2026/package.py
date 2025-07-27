@@ -28,7 +28,7 @@ fi
 
 if [ -f "{installer}.tgz" ]; then
     tar -xzf {installer}.tgz
-    sudo ./Setup -q
+    ./Setup --silent --install_dest $REZ_BUILD_INSTALL_PATH --noupdate
 fi
 
 """
