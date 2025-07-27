@@ -34,7 +34,6 @@ if [ -f "{installer}.tar.gz" ]; then
     "{installer}/houdini.install" --install-houdini \
         --install-sidefxlabs \
         --sidefxlabs-dir "$REZ_BUILD_INSTALL_PATH/SideFXLabs" \
-        --install-menus \
         --no-root-check \
         "$REZ_BUILD_INSTALL_PATH" || exit 1
 fi
