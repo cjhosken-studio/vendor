@@ -34,5 +34,15 @@ fi
 """
 
 def commands():
-    env.PATH.prepend(f"/usr/autodesk/maya{version}/bin")
-    env.LD_LIBRARY_PATH.append(f"/usr/autodesk/maya{version}/lib")
+    import platform
+
+    if platform.system() == "Windows":
+        env.PATH.prepend("")
+    else:
+        env.PATH.prepend(f"/usr/autodesk/maya{version}/bin")
+        env.LD_LIBRARY_PATH.append(f"/usr/autodesk/maya{version}/lib")
+
+import platform
+
+if platform.system() == "Windows":
+    build_command = "{root}/build.bat"

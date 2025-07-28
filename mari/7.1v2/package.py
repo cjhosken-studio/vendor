@@ -39,3 +39,8 @@ def commands():
 
     alias("mari", "{root}/bin/Mari{version}")
     alias("mython", "{root}/3rdParty/python3.10")
+
+import platform
+
+if platform.system() == "Windows":
+    build_command = "{root}/build.bat"

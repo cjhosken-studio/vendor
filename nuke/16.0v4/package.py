@@ -41,3 +41,8 @@ def commands():
 
     alias("nuke", "{root}/Nuke16.0")
     alias("nython", "{root}/python3")
+
+import platform
+
+if platform.system() == "Windows":
+    build_command = "{root}/build.bat"

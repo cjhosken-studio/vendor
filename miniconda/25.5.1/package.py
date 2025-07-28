@@ -15,10 +15,6 @@ tools = [
     "conda"
 ]
 
-variants = [
-    ["python-3.13"]
-]
-
 installer = f"Miniconda3-py313_{version}-1-Linux-x86_64.sh"
 
 build_command = f"""
@@ -28,10 +24,24 @@ chmod +x ./{installer}
 """
 
 def commands():
-    env.PATH.prepend("{root}")
-    env.CMAKE_MODULE_PATH.append("{root}/cmake")
+    import platform
 
-    env.miniconda_ROOT.set("{root}")
-    env.miniconda_INCLUDE_DIR.set("{root}/include")
-    env.miniconda_LIBRARY_DIR.set("{root}/lib")
+    if platform.system() == "Windows":
+        env.PATH.prepend("{root}/Scripts")
 
+        env.miniconda_ROOT.set("{root}")
+        env.miniconda_INCLUDE_DIR.set("{root}/include")
+        env.miniconda_LIBRARY_DIR.set("{root}/Lib")
+    
+    else:
+        env.PATH.prepend("{root}")
+        env.CMAKE_MODULE_PATH.append("{root}/cmake")
+
+        env.miniconda_ROOT.set("{root}")
+        env.miniconda_INCLUDE_DIR.set("{root}/include")
+        env.miniconda_LIBRARY_DIR.set("{root}/lib")
+
+import platform
+
+if platform.system() == "Windows":
+    build_command = "{root}/build.bat"

@@ -26,3 +26,8 @@ def commands():
     env.DAVINCIRESOLVE_ROOT.set("{root}")
 
     alias("davinciresolve", "{root}/bin/resolve")
+
+import platform
+
+if platform.system() == "Windows":
+    build_command = "{root}/build.bat"

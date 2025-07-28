@@ -41,3 +41,8 @@ def commands():
     alias("python", "{root}/4.5/python/bin/python3.11")
     alias("python3", "{root}/4.5/python/bin/python3.11")
     alias("bython", "{root}/4.5/python/bin/python3.11")
+
+import platform
+
+if platform.system() == "Windows":
+    build_command = "{root}/build.bat"
