@@ -15,24 +15,6 @@ tools = [
     "Mari7.1v2",
 ]
 
-requires = [
-]
-
-installer=f"Mari{version}-linux-x86-release-64.run"
-
-build_command=f"""
-if [ ! -f "{installer}" ]; then
-    wget https://thefoundry.s3.amazonaws.com/products/mari/releases/{version}/{installer}
-fi
-if [ -f "{installer}" ]; then
-    chmod +x ./{installer}
-    ./{installer} --prefix=$REZ_BUILD_INSTALL_PATH --accept-eula --exclude-subdir
-
-    # Install the splash screen
-    cp -r ../splash/* $REZ_BUILD_INSTALL_PATH/Media/Logos/
-fi
-"""
-
 def commands():
     env.PATH.prepend("{root}/bin")
     env.LD_LIBRARY_PATH.append("{root}/lib:{root}/3rdParty/lib")
@@ -44,3 +26,5 @@ import platform
 
 if platform.system() == "Windows":
     build_command = "{root}/build.bat"
+else:
+    build_command = "{root}/build.sh"

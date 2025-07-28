@@ -15,14 +15,6 @@ tools = [
     "conda"
 ]
 
-installer = f"Miniconda3-py313_{version}-1-Linux-x86_64.sh"
-
-build_command = f"""
-wget https://repo.anaconda.com/miniconda/{installer}
-chmod +x ./{installer}
-./{installer} -b -f -p $REZ_BUILD_INSTALL_PATH
-"""
-
 def commands():
     import platform
 
@@ -45,3 +37,5 @@ import platform
 
 if platform.system() == "Windows":
     build_command = "{root}/build.bat"
+else:
+    build_command = "{root}/build.sh"

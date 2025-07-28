@@ -16,23 +16,6 @@ tools = [
     "maya",
 ]
 
-requires = [
-]
-
-installer = "Autodesk_Maya_2026_1_Update_ML_Linux_64bit"
-
-build_command=f"""
-if [ ! -f "{installer}.tgz" ]; then
-    wget https://efulfillment.autodesk.com/NetSWDLD/prd/{version}/MAYA/A9AFE7E8-904B-3EEC-9689-0D2FD263FF90/{installer}.tgz
-fi
-
-if [ -f "{installer}.tgz" ]; then
-    tar -xzf {installer}.tgz
-    ./Setup --silent --install_dest $REZ_BUILD_INSTALL_PATH --noupdate
-fi
-
-"""
-
 def commands():
     import platform
 
@@ -46,3 +29,5 @@ import platform
 
 if platform.system() == "Windows":
     build_command = "{root}/build.bat"
+else:
+    build_command = "{root}/build.sh"
