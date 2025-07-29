@@ -19,6 +19,7 @@ def commands():
         code_root = f"{pathlib.Path.home()}/AppData/Local/Programs/Microsoft VS Code"
         env.PATH.prepend(f"{code_root}")
         env.VSCODE_ROOT.set(f"{code_root}")
+
         alias("vscode", "Code.exe")
     else:
         env.PATH.prepend("{root}")        

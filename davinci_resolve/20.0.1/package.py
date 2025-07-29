@@ -1,4 +1,4 @@
-name = "davinciresolve"
+name = "davinci_resolve"
 
 version = "20.0.1"
 
@@ -9,23 +9,23 @@ description = \
 
 tools = [
     "resolve",
-    "davinciresolve"
+    "davinci_resolve"
 ]
 
 def commands():
     import platform
 
     if platform.system() == "Windows":
-        resolve_root = "C:\\Program Files\\Blackmagic Design\\DaVinci Resolve"
+        resolve_root = "C:/Program Files/Blackmagic Design/DaVinci Resolve"
         env.PATH.append(f"{resolve_root}")
-        env.DAVINCIRESOLVE_ROOT.set(f"{resolve_root}")
-        alias("davinciresolve", f"Resolve.exe")
+        env.DAVINCI_RESOLVE_ROOT.set(f"{resolve_root}")
+        alias("davinci_resolve", f"Resolve.exe")
         alias("resolve", f"Resolve.exe")
     
     else:
         env.PATH.append("{root}/bin")
-        env.DAVINCIRESOLVE_ROOT.set("{root}")
-        alias("davinciresolve", "{root}/bin/resolve")
+        env.DAVINCI_RESOLVE_ROOT.set("{root}")
+        alias("davinci_resolve", "{root}/bin/resolve")
 
 import platform
 

@@ -22,7 +22,7 @@ def commands():
     import platform
 
     if platform.system() == "Windows":
-        houdini_root = "C:/Program Files/Side Effects Software/Houdini {version}"
+        houdini_root = f"C:/Program Files/Side Effects Software/Houdini {version}"
         env.PATH.append(f"{houdini_root}/bin")
         env.HFS.set(f"{houdini_root}")
         env.HOUDINI_ROOT.set(f"{houdini_root}")
