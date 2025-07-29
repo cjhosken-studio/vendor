@@ -14,6 +14,8 @@ def commands():
     painter_root = "C:/Program Files/Adobe/Adobe Substance 3D Painter"
     env.PATH.prepend(painter_root)
     env.SUBSTANCE_PAINTER_ROOT.set(painter_root)
-    alias("painter", "Adobe Substance 3D Painter.exe")
+    env.PAINTER_CMD.set(f'"{painter_root}/Adobe Substance 3D Painter.exe"')
+    painter_exe = f'"{painter_root}/Adobe Substance 3D Painter.exe"'
+    alias("painter", f'& {painter_exe} $args')
 
 build_command = ""

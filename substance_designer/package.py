@@ -13,6 +13,7 @@ def commands():
     designer_root = "C:/Program Files/Adobe/Adobe Substance 3D Designer"
     env.PATH.prepend(designer_root)
     env.SUBSTANCE_DESIGNER_ROOT.set(designer_root)
-    alias("designer", "Adobe Substance 3D Designer.exe")
-
+    designer_exe = f'"{designer_root}/Adobe Substance 3D Designer.exe"'
+    alias("designer", f'& {designer_exe} $args')
+    
 build_command = ""
