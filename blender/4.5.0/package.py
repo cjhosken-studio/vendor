@@ -22,14 +22,21 @@ requires = [
 ]
 
 def commands():
+    import platform
     env.PATH.prepend("{root}/4.5/python/bin")
     env.PATH.prepend("{root}")
 
-    alias("blender", "{root}/blender --app-template blender")
-    alias("python", "{root}/4.5/python/bin/python3.11")
-    alias("python3", "{root}/4.5/python/bin/python3.11")
-    alias("bython", "{root}/4.5/python/bin/python3.11")
+    alias("blender", "{root}/blender --use-system-python --app-template blender")
 
+    if platform.system() == "Windows":
+        alias("python3", "{root}/4.5/python/bin/python")
+    else:
+        alias("python", "{root}/4.5/python/bin/python3.11")
+        alias("python3", "{root}/4.5/python/bin/python3.11")
+
+    if building:
+        env.BLENDER_ROOT.set("{root}")
+        
 import platform
 
 if platform.system() == "Windows":

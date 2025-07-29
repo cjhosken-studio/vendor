@@ -25,6 +25,6 @@ def commands():
 import platform
 
 if platform.system() == "Windows":
-    build_command = "{root}/build.bat"
+    build_command = ""
 else:
     build_command = "{root}/build.sh"

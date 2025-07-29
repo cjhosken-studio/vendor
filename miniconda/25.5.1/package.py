@@ -17,25 +17,30 @@ tools = [
 
 def commands():
     import platform
+    import pathlib
 
     if platform.system() == "Windows":
-        env.PATH.prepend("{root}/Scripts")
+        miniconda_root = f"{pathlib.Path.home()}/miniconda3"
 
-        env.miniconda_ROOT.set("{root}")
-        env.miniconda_INCLUDE_DIR.set("{root}/include")
-        env.miniconda_LIBRARY_DIR.set("{root}/Lib")
+        env.PATH.prepend(f"{miniconda_root}/Scripts")
+
+        if building:
+            env.MINICONDA_ROOT.set(f"{miniconda_root}")
+            env.MINICONDA_INCLUDE_DIR.set(f"{miniconda_root}/include")
+            env.MINICONDA_LIBRARY_DIR.set(f"{miniconda_root}/Lib")
     
     else:
         env.PATH.prepend("{root}")
         env.CMAKE_MODULE_PATH.append("{root}/cmake")
 
-        env.miniconda_ROOT.set("{root}")
-        env.miniconda_INCLUDE_DIR.set("{root}/include")
-        env.miniconda_LIBRARY_DIR.set("{root}/lib")
+        if building:
+            env.MINICONDA_ROOT.set("{root}")
+            env.MINICONDA_INCLUDE_DIR.set("{root}/include")
+            env.MINICONDA_LIBRARY_DIR.set("{root}/lib")
 
 import platform
 
 if platform.system() == "Windows":
-    build_command = "{root}/build.bat"
+    build_command = ""
 else:
     build_command = "{root}/build.sh"

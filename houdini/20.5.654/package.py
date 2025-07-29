@@ -22,21 +22,22 @@ def commands():
     import platform
 
     if platform.system() == "Windows":
-        env.PATH.append("C:\Program Files\Side Effects Software\Houdini 20.5.654")
+        houdini_root = "C:/Program Files/Side Effects Software/Houdini {version}"
+        env.PATH.append(f"{houdini_root}/bin")
+        env.HFS.set(f"{houdini_root}")
+        env.HOUDINI_ROOT.set(f"{houdini_root}")
     else:
         env.PATH.append("{root}/bin:{root}/python/bin")
-
         env.LD_LIBRARY_PATH.append("{root}/dsolib")
 
         env.HFS.set("{root}")
         env.HOUDINI_ROOT.set("{root}")
 
-def post_commands():
-    command("cd $HOUDINI_ROOT; source ./houdini_setup; cd -")
+        command("cd $HOUDINI_ROOT; source ./houdini_setup; cd -")
 
 import platform
 
 if platform.system() == "Windows":
-    build_command = "{root}/build.bat"
+    build_command = ""
 else:
     build_command = "{root}/build.sh"
