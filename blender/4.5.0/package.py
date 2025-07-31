@@ -26,7 +26,7 @@ def commands():
     env.PATH.prepend("{root}/4.5/python/bin")
     env.PATH.prepend("{root}")
 
-    alias("blender", "{root}/blender --use-system-python --app-template blender")
+    alias("blender", "{root}/blender --python-use-system-env --app-template blender")
 
     if platform.system() == "Windows":
         alias("python3", "{root}/4.5/python/bin/python")
