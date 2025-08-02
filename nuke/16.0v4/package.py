@@ -22,7 +22,7 @@ def commands():
 
 
     if platform.system() == "Windows":
-        nuke_root = f"C:\Program Files\Nuke{version}"
+        nuke_root = f"C:/Program Files/Nuke{version}"
         env.PATH.prepend(nuke_root)
         alias("nuke", f"Nuke{maj}.0")
     else:

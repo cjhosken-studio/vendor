@@ -6,5 +6,5 @@ fi
 
 if [ -f "resolve-$VERSION.zip" ]; then
     unzip resolve-$VERSION.zip -n
-    "./DaVinci_Resolve_$VERSION_Linux.run" -i -y -n -C $REZ_BUILD_INSTALL_PATH
+    "./DaVinci_Resolve_"$VERSION"_Linux.run" -i -y -n -C $REZ_BUILD_INSTALL_PATH
 fi
