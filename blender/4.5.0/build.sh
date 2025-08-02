@@ -1,9 +1,10 @@
-# Get version from parent directory name (e.g., "4.5")
+# Get version from parent directory name (e.g., "4.5" or "4.5.2")
 VERSION=$(basename "$(dirname "$0")")
 
-# Extract major and minor versions (e.g., "4" and "5")
-MAJOR_VERSION="${VERSION%%.*}"  # Everything before the first dot
-MINOR_VERSION="${VERSION#*.}"   # Everything after the first dot
+# Extract major and minor versions (strictly first and second numbers only)
+MAJOR_VERSION="${VERSION%%.*}"  # Extracts the major version (first number)
+MINOR_VERSION="${VERSION#*.}"   # Get everything after first dot
+MINOR_VERSION="${MINOR_VERSION%%.*}"  # Then take only before next dot
 
 PYTHON_VERSION="3.11"
 
@@ -11,9 +12,6 @@ PYTHON_VERSION="3.11"
 wget "https://download.blender.org/release/Blender${MAJOR_VERSION}.${MINOR_VERSION}/blender-${VERSION}-linux-x64.tar.xz"
 tar -xf "blender-${VERSION}-linux-x64.tar.xz" -C "$REZ_BUILD_INSTALL_PATH" --strip-components=1
 
-# Install Python deps (using full version)
-"$REZ_BUILD_INSTALL_PATH/${VERSION}/python/bin/python$PYTHON_VERSION" -m pip install PySide6 numpy
-
 # Splash screen setup (using full version)
-mkdir -p "$REZ_BUILD_INSTALL_PATH/${VERSION}/scripts/startup/bl_app_templates_system/blender"
-cp -r ../splash/* "$REZ_BUILD_INSTALL_PATH/${VERSION}/scripts/startup/bl_app_templates_system/blender"
+mkdir -p "$REZ_BUILD_INSTALL_PATH/${MAJOR_VERSION}.${MINOR_VERSION}/scripts/startup/bl_app_templates_system/blender"
+cp -r ../splash/* "$REZ_BUILD_INSTALL_PATH/${MAJOR_VERSION}.${MINOR_VERSION}/scripts/startup/bl_app_templates_system/blender"
